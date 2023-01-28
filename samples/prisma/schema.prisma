@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique 
+  password String
+  uuid String @unique 
+  refreshToken String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Content {
+  id Int @id @default(autoincrement())
+  virtualPath String @unique 
+  pid String
+  internalPath String
+  pageTitle String @default("Untitled Document")
+  navTitle String?
+  protected String @default("N")
+  metaData String?
+  content String? @db.LongText
+  javascript String
+  stylesheet String
+  navPlacement String?
+  weight Float @unique
+  theme String?
+  cache Int?
+  throttle Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

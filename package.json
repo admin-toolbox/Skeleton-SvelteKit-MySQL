@@ -36,5 +36,8 @@
 		"typescript": "^4.9.4",
 		"vite": "^4.0.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@prisma/client": "^4.9.0"
+	}
 }
